@@ -1,0 +1,53 @@
+Answer the following questions using information exclusively on this contract 
+1) What type of contract is this? 
+2) Who are the parties and their roles? Where are they incorporated? Name state and country (use ISO 3166 Country name)
+3) What is the Agreement Date? 
+4) What is the Effective date? 
+5) What is the expiration date? (provide the specific date if mentioned in the contract or a relative data if the expiration date is relative to the Agreement date) 
+6) What is the Renewal Term ? 
+7) What is the Notice Period To Terminate Renewal? 
+8) What is the governing law ? 
+Name the state and country (use ISO 3166 Country name)
+9) If multiple countries are in the governing law, what is the most favoured country? if there is only one country just repeat the same information for governing law 
+
+For each of the following types of contract clauses, extract two pieces of information: 
+a) A Yes/No that indicates if you think the clause is found in this contract 
+b) A list of excerpts that indicates this clause type exists. For each excerpt, replace double quotes with single quotes
+
+Contract Clause types: Competitive Restriction Exception, Non-Compete Clause, Exclusivity, No-Solicit Of Customers,
+No-Solicit Of Employees, Non-Disparagement, Termination For Convenience, Rofr/Rofo/Rofn, Change Of Control, 
+Anti-Assignment, Revenue/Profit Sharing, Price Restrictions, Minimum Commitment,Volume Restriction, 
+IP Ownership Assignment, Joint IP Ownership Clause, License grant, Non-Transferable License , 
+Affiliate License-Licensor, Affiliate License-Licensee,Unlimited/All-You-Can-Eat-License,Irrevocable Or Perpetual License, 
+Source Code Escrow, Post-Termination Services, Audit Rights, Uncapped Liability, Cap On Liability, Liquidated Damages, 
+Warranty Duration, Insurance, Covenant Not To Sue, Third Party Beneficiary 
+
+Finally, Using the answers to the questions above, provide your final answer in a JSON document.
+Make sure the JSON document is VALID and adheres to the correct format. 
+ 
+The JSON document has the following structure: 
+
+- agreement 
+    - agreement_name: a string containing the names of the parties concatenated
+    - agreement_type: a string
+    - effective_date: a string
+    - expiration_date: a string
+    - renewal_term as a string
+    - Notice_period_to_Terminate_Renewal as a string
+    - parties: For each party to the contract provide the following:
+        - role - a string
+        - name: a string 
+        - incorporation_country: a string, use ISO 3166 Country name
+        - incorporation_state: a string
+    - governing_law:
+        - country:  a string, use ISO 3166 Country name
+        - state: a string
+        - most_favored_country: a string, use ISO 3166 Country name
+    - clauses A list of JSON objects where each object represents a clause type 
+        You should add element to the list ONLY if you can provide a list of excerpts from the contract that makes you think the clause exists. Do not add the element to the list if you can't find any relevant excerpt related to the type of clause
+        Each clause type should have the following properties:
+        - clause_type: a string containing one of the clause types above
+        - exists: A boolean, if this type of clause was found on the contract
+        - excerpts: a list containing each of excerpts from the contract related to this type of clause
+    
+
