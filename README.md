@@ -81,7 +81,7 @@ In the [data](./data/input) folder, you will find 3 real commercial contracts in
 
 These contracts were taken from the publicly available [Contract Understanding Atticus Dataset](https://www.atticusprojectai.org/cuad)
 
-Our first step is to run a program that will prompt a ```Gemini 1.5 pro`` model to answer 40+ questions for each contract.
+Our first step is to run a program that will prompt a ```Gemini 1.5 pro``` model to answer 40+ questions for each contract.
 The prompt will include instructions to store the extracted information in in JSON format, under [data/output](./data/output)
 
 The full prompt can be found [here](./prompts/contract_extraction_prompt.txt)
@@ -133,7 +133,9 @@ Now, let's create a Knowledge Graph from the JSON files in ```./data/output/*.js
 ```
 The ```create_graph_from_json``` Python script is relatively straightforward to understand. 
 
-The main area of complexity is the ```CREATE_GRAPH_STATEMENT``` CYPHER statement that takes a Contract JSON and creates the relevant nodes and relationships for that contract in Neo4j. You can check out the original [blog post](https://medium.com/@edward.sandoval.2000/graphrag-in-commercial-contract-review-7d4a6caa6eb5) for a full breakdown of this CYPHER statement
+The main area of complexity is the ```CREATE_GRAPH_STATEMENT``` CYPHER statement that takes a Contract JSON and creates the relevant nodes and relationships for that contract in Neo4j. 
+
+You can check out the original [blog post](https://medium.com/@edward.sandoval.2000/graphrag-in-commercial-contract-review-7d4a6caa6eb5) for a full breakdown of this CYPHER statement
 
 
 You will see output similar to 
@@ -206,13 +208,13 @@ Armed with our Knowledge Graph data retrieval functions, we are ready to build a
 
 We will use Microsoft Semantic Kernel, a framework that allows developers to integrate LLM function calling with existing APIs and data retrieval functions 
 
-The framework uses a concept called ```Plugins``` to represent specific functionality that the kernel can perform. In our case, all of our data retrieval functions defined in the "ContractPlugin" can be used by the LLM to answer the question
+The framework uses a concept called ```Plugins``` to represent specific functionality that the kernel can perform. In our case, all of our data retrieval functions defined in the "ContractPlugin" can be used by the LLM to answer questions about contracts in the Neo4J database
 
 The framework uses the concept of ```Memory``` to keep all interactions between user and agent, as well as functions executed and data retrieved
 
 An extremely simple Terminal-based agent can be implemented with a few lines of code. 
 
-Set your OpenAI Key 
+First, Set your OpenAI Key 
 
 ```
 export OPENAI_API_KEY=sk-....
@@ -223,7 +225,8 @@ python test_agent.py
 ```
 You can try variations of the following questions to exercise the different data retrieval functions
 
-- Get me contracts with Price Restrictions but without Insurance (note this requires calling 2 functions)
+- Get me contracts with Price Restrictions but without Insurance 
+    - See the logging INFO and notice how this requires calling 2 of our data retrieval functions
 - Get more details about this contract
 - Get me contracts for AT&T 
 - Get me contracts for Mount Knowledge
