@@ -26,14 +26,6 @@ Affiliate License-Licensor, Affiliate License-Licensee,Unlimited/All-You-Can-Eat
 Source Code Escrow, Post-Termination Services, Audit Rights, Uncapped Liability, Cap On Liability, Liquidated Damages, 
 Warranty Duration, Insurance, Covenant Not To Sue, Third Party Beneficiary.
 
-
-
-
-
-
-
-
-
 Finally, Using the answers to the questions above, provide your final answer in a JSON document.
 Make sure the JSON document is VALID and adheres to the correct format. 
  
