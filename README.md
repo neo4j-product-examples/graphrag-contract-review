@@ -79,7 +79,7 @@ These contracts were taken from the publicly available [Contract Understanding A
 
 Our first step is to run a program that will prompt a ```OpenAI gpt-4o``` model to answer 40+ questions for each contract.
 
-The prompt will include instructions to store the extracted information in in JSON format, under [data/output](./data/output)
+The prompt will include instructions to store the extracted information in JSON format, under [data/output](./data/output)
 
 The full prompt can be found [here](./prompts/contract_extraction_prompt.txt)
 
