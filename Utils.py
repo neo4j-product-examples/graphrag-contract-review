@@ -17,6 +17,8 @@ def read_text_file(file_path):
 def extract_json_from_string(input_string):
     try:
         # Parse the JSON string into a Python object (dictionary)
+        if input_string.startswith('```json'):
+            input_string = re.sub(r'^```json\s*|\s*```$', '', input_string, flags=re.DOTALL)
         
         json_object = json.loads(input_string)
         return json_object

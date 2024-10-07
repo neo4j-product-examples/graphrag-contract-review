@@ -1,6 +1,5 @@
-google-cloud-aiplatform
-google-generativeai
 neo4j-rust-ext
 neo4j-graphrag
 semantic-kernel
 streamlit
+openai

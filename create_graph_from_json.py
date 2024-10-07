@@ -53,7 +53,7 @@ FOREACH (clause IN valid_clauses |
 CREATE_VECTOR_INDEX_STATEMENT = """
 CREATE VECTOR INDEX excerpt_embedding IF NOT EXISTS 
     FOR (e:Excerpt) ON (e.embedding) 
-    OPTIONS {indexConfig: {`vector.dimensions`: 768, `vector.similarity_function`:'cosine'}} 
+    OPTIONS {indexConfig: {`vector.dimensions`: 1536, `vector.similarity_function`:'cosine'}} 
 """
 
 CREATE_FULL_TEXT_INDICES = [
@@ -66,11 +66,13 @@ CREATE_FULL_TEXT_INDICES = [
     
 ]
 
+
 EMBEDDINGS_STATEMENT = """
 MATCH (e:Excerpt) 
 WHERE e.text is not null and e.embedding is null
-SET e.embedding = genai.vector.encode(e.text, "VertexAI", {projectId: $gcp_project_id, 
-                                    token: $token, model: "textembedding-gecko@003"})
+SET e.embedding = genai.vector.encode(e.text, "OpenAI", { 
+                    token: $token, model: "text-embedding-3-small", dimensions: 1536
+                  })
 """
 
 def index_exists(driver,  index_name):
@@ -90,16 +92,14 @@ def create_full_text_indices(driver):
 
 
 NEO4J_URI=os.getenv('NEO4J_URI', 'bolt://localhost:7687')
-NEO4J_USER=os.getenv('NEO4J_USER', 'neo4j')
+NEO4J_USER=os.getenv('NEO4J_USERNAME', 'neo4j')
 NEO4J_PASSWORD=os.getenv('NEO4J_PASSWORD')
-GOOGLE_API_KEY=os.getenv('GOOGLE_API_KEY')
-GOOGLE_PROJECT_ID=os.getenv('GOOGLE_PROJECT_ID')
-
-# export GOOGLE_API_KEY=$(gcloud auth print-access-token)
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+JSON_CONTRACT_FOLDER = './data/output/'
 
 driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
 
-JSON_CONTRACT_FOLDER = './data/output/'
+
 
 json_contracts = [filename for filename in os.listdir(JSON_CONTRACT_FOLDER) if filename.endswith('.json')]
 contract_id = 1
@@ -116,4 +116,4 @@ for json_contract in json_contracts:
 create_full_text_indices(driver)
 driver.execute_query(CREATE_VECTOR_INDEX_STATEMENT)
 print ("Generating Embeddings for Contract Excerpts...")
-driver.execute_query(EMBEDDINGS_STATEMENT, token = GOOGLE_API_KEY, gcp_project_id = GOOGLE_PROJECT_ID)
+driver.execute_query(EMBEDDINGS_STATEMENT, token = OPENAI_API_KEY)

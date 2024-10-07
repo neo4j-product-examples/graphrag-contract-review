@@ -2,8 +2,8 @@ from neo4j import GraphDatabase
 from typing import List 
 from AgreementSchema import Agreement, ClauseType,Party, ContractClause
 from neo4j_graphrag.retrievers import VectorCypherRetriever,Text2CypherRetriever
+from neo4j_graphrag.embeddings import OpenAIEmbeddings
 from formatters import my_vector_search_excerpt_record_formatter
-from GeminiEmbedder import GeminiEmbedder
 from neo4j_graphrag.llm import OpenAILLM
 
 
@@ -147,8 +147,8 @@ class ContractSearchService:
 
     async def get_contracts_similar_text(self, clause_text: str) -> List[Agreement]:
 
-        #make sure GOOGLE_API_KEY is set
-        gemini_embbeder = GeminiEmbedder()
+        #Ensure OPENAI_API_KEY is set
+        openai_embedder = OpenAIEmbeddings(model = "text-embedding-3-small")
 
         #Cypher to traverse from the semantically similar excerpts back to the agreement
         EXCERPT_TO_AGREEMENT_TRAVERSAL_QUERY="""
@@ -160,7 +160,7 @@ class ContractSearchService:
         retriever = VectorCypherRetriever(
             driver= self._driver,  
             index_name="excerpt_embedding",
-            embedder=gemini_embbeder, 
+            embedder=openai_embedder, 
             retrieval_query=EXCERPT_TO_AGREEMENT_TRAVERSAL_QUERY,
             result_formatter=my_vector_search_excerpt_record_formatter
         )
