@@ -130,7 +130,7 @@ Now, let's create a Knowledge Graph from the JSON files in ```./data/output/*.js
 ```
 The ```create_graph_from_json``` Python script is relatively straightforward to understand. 
 
-The main area of complexity is the ```CREATE_GRAPH_STATEMENT```. This [CYPHER statement](.create_graph_from_json.py#L7) that takes a Contract JSON and creates the relevant nodes and relationships for that contract in Neo4j. 
+The main area of complexity is the ```CREATE_GRAPH_STATEMENT```. This [CYPHER statement](./create_graph_from_json.py#L7) that takes a Contract JSON and creates the relevant nodes and relationships for that contract in Neo4j. 
 
 You can check out the original [blog post](https://medium.com/@edward.sandoval.2000/graphrag-in-commercial-contract-review-7d4a6caa6eb5) for a full breakdown of this CYPHER statement
 
