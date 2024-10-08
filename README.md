@@ -137,11 +137,11 @@ You can check out the original [blog post](https://medium.com/@edward.sandoval.2
 
 You will see output similar to 
 ```
-Index excerptTextIndex already exists.
-Index agreementTypeTextIndex already exists.
-Index clauseTypeNameTextIndex already exists.
-Index clauseNameTextIndex already exists.
-Index organizationNameTextIndex already exists.
+Index excerptTextIndex created.
+Index agreementTypeTextIndex created.
+Index clauseTypeNameTextIndex created.
+Index clauseNameTextIndex created.
+Index organizationNameTextIndex created.
 Creating index: contractIdIndex
 Generating Embeddings for Contract Excerpts...
 ```

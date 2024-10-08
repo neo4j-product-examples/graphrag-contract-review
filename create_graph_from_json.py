@@ -11,7 +11,6 @@ WITH data.agreement as a
 // todo proper global id for the agreement, perhaps from filename
 MERGE (agreement:Agreement {contract_id: a.contract_id})
 ON CREATE SET 
-  agreement.contract_id  = a.contract_id,
   agreement.name = a.agreement_name,
   agreement.effective_date = a.effective_date,
   agreement.expiration_date = a.expiration_date,
@@ -38,7 +37,7 @@ FOREACH (party IN a.parties |
 
 WITH a, agreement, [clause IN a.clauses WHERE clause.exists = true] AS valid_clauses
 FOREACH (clause IN valid_clauses |
-  CREATE (cl:ContractClause {name: clause.clause_type, type: clause.clause_type})
+  CREATE (cl:ContractClause {type: clause.clause_type})
   MERGE (agreement)-[clt:HAS_CLAUSE]->(cl)
   SET clt.type = clause.clause_type
   // ON CREATE SET c.excerpts = clause.excerpts

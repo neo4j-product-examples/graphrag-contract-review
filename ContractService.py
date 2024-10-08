@@ -12,6 +12,10 @@ class ContractSearchService:
     def __init__(self, uri, user ,pwd ):
         driver = GraphDatabase.driver(uri, auth=(user, pwd))
         self._driver = driver
+        self._openai_embedder = OpenAIEmbeddings(model = "text-embedding-3-small")
+        # Create LLM object. Used to generate the CYPHER queries
+        self._llm = OpenAILLM(model_name="gpt-4o", model_params={"temperature": 0}) 
+        
     
     async def get_contract(self, contract_id: int) -> Agreement:
         
@@ -147,8 +151,6 @@ class ContractSearchService:
 
     async def get_contracts_similar_text(self, clause_text: str) -> List[Agreement]:
 
-        #Ensure OPENAI_API_KEY is set
-        openai_embedder = OpenAIEmbeddings(model = "text-embedding-3-small")
 
         #Cypher to traverse from the semantically similar excerpts back to the agreement
         EXCERPT_TO_AGREEMENT_TRAVERSAL_QUERY="""
@@ -160,7 +162,7 @@ class ContractSearchService:
         retriever = VectorCypherRetriever(
             driver= self._driver,  
             index_name="excerpt_embedding",
-            embedder=openai_embedder, 
+            embedder=self._openai_embedder, 
             retrieval_query=EXCERPT_TO_AGREEMENT_TRAVERSAL_QUERY,
             result_formatter=my_vector_search_excerpt_record_formatter
         )
@@ -188,13 +190,12 @@ class ContractSearchService:
     async def answer_aggregation_question(self, user_question) -> str:
         answer = ""
 
-        # Create LLM object to generate the CYPHER queries
-        llm = OpenAILLM(model_name="gpt-4o", model_params={"temperature": 0})
+        
 
         NEO4J_SCHEMA = """
             Node properties:
             Agreement {agreement_type: STRING, contract_id: INTEGER,effective_date: STRING,renewal_term: STRING, name: STRING}
-            ContractClause {name: STRING, type: STRING}
+            ContractClause {type: STRING}
             ClauseType {name: STRING}
             Country {name: STRING}
             Excerpt {text: STRING}
@@ -219,7 +220,7 @@ class ContractSearchService:
         # Initialize the retriever
         retriever = Text2CypherRetriever(
             driver=self._driver,
-            llm=llm,
+            llm=self._llm,
             neo4j_schema=NEO4J_SCHEMA
         )
 
