@@ -18,7 +18,7 @@ a) A Yes/No that indicates if you think the clause is found in this contract
 b) A list of full (long) excerpts, directly taken from the contract that give you reason to believe that this this clause type exists. 
  
 
-The only Contract Clause types are: Competitive Restriction Exception, Non-Compete Clause, Exclusivity, No-Solicit Of Customers,
+The only Contract Clause types are: Competitive Restriction Exception, Non-Compete, Exclusivity, No-Solicit Of Customers,
 No-Solicit Of Employees, Non-Disparagement, Termination For Convenience, Rofr/Rofo/Rofn, Change Of Control, 
 Anti-Assignment, Revenue/Profit Sharing, Price Restrictions, Minimum Commitment,Volume Restriction, 
 IP Ownership Assignment, Joint IP Ownership, License grant, Non-Transferable License, 
