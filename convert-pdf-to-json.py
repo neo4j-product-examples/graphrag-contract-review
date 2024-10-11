@@ -22,7 +22,6 @@ pdf_assistant = client.beta.assistants.create(
     description="An assistant to extract the information from contracts in PDF format.",
     tools=[{"type": "file_search"}],
     name="PDF assistant",
-    #response_format={ "type": "json_object" },
     instructions=system_instruction,
 )
 

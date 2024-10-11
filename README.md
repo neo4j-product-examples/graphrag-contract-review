@@ -6,7 +6,10 @@ This repository contains all of the code mentioned in [GraphRAG in Commercial Co
 ## Contract Review - GraphRAG-based approach
 The GraphRAG-based approach described in the blog post goes beyond the traditional chunk-based RAG, focusing instead on targeted information extraction from the contracts (LLM + Prompt) to create a knowledge graph representation (LLM + Neo4J), a simple set of data retrieval functions (in Python using Cypher, Text to Cypher, Vector Search retrievers) and ultimately a Q&A agent (Semantic Kernel) capable of handling complex questions
 
-[TODO: insert picture illustrating the 4 steps]
+The diagram below illustrates the approach
+
+![4-stage-approach](./images/4-stage-approach%20.png)
+
 
 The four steps are:
 - Extracting Relevant Information from Contracts (LLM + Contract)
@@ -15,12 +18,11 @@ The four steps are:
 - Building a Q&A Agent handling complex questions (Semantic Kernel, LLM, Neo4j)
 
 # What Do You Need?
-- Obtain an [OpenAI token](https://platform.openai.com/api-keys). It will be used to
+- Obtain an [OpenAI token](https://platform.openai.com/api-keys). It will be used to:
     - Build the Q&A agent with Semantic Kernel
-    - Power Text2Cypher data retrieval function
-    - Extract specific information from contracts
-    - Generate embeddings for contract excerpts
-
+    - Extract specific information from contracts (parties,key dates,jurisdiction)
+    - Generate embeddings for a small number of contract excerpts
+    - Power a Text2Cypher data retrieval function
 - Python 3.9+ and a Python virtual environment
 - Access to a Neo4j database
     - Docker, Aura or Self-hosted
