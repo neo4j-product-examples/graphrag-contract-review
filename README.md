@@ -148,7 +148,7 @@ Creating index: contractIdIndex
 Generating Embeddings for Contract Excerpts...
 ```
 
-The generation of embeddings for each excerpt takes about 1-2 minute(s) to complete
+The generation of embeddings takes about 1 minute(s) to complete
 
 After the Python script finishes:
 - Each Contract JSON has been uploaded to Neo4J Knowledge Graph
