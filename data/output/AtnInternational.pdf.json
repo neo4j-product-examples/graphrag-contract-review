@@ -1,29 +1,29 @@
 {
     "agreement": {
-        "agreement_name": "Network Build and Maintenance Agreement",
-        "agreement_type": "Mobility Network General Agreement",
-        "effective_date": "July 31, 2019",
-        "expiration_date": "The Agreement will expire upon the expiration or termination of the last Addendum",
-        "renewal_term": "Not specified",
-        "Notice_period_to_Terminate_Renewal": "Not specified",
+        "agreement_name": "Mobility Network General Agreement",
+        "agreement_type": "Network Build and Maintenance Agreement",
+        "effective_date": "2019-07-31",
+        "expiration_date": "",
+        "renewal_term": "",
+        "Notice_period_to_Terminate_Renewal": "",
         "parties": [
             {
                 "role": "Vendor",
                 "name": "Commnet Wireless, LLC",
-                "incorporation_country": "United States",
+                "incorporation_country": "United States of America",
                 "incorporation_state": "Delaware"
             },
             {
-                "role": "AT&T",
-                "name": "AT&T Mobility LLC",
-                "incorporation_country": "United States",
+                "role": "AT&T Mobility LLC",
+                "name": "Contracting Party",
+                "incorporation_country": "United States of America",
                 "incorporation_state": "Delaware"
             }
         ],
         "governing_law": {
-            "country": "United States",
-            "state": "Delaware",
-            "most_favored_country": "United States"
+            "country": "United States of America",
+            "state": "New York",
+            "most_favored_country": "United States of America"
         },
         "clauses": [
             {
@@ -32,16 +32,14 @@
                 "excerpts": []
             },
             {
-                "clause_type": "Non-Compete Clause",
+                "clause_type": "Non-Compete",
                 "exists": false,
                 "excerpts": []
             },
             {
                 "clause_type": "Exclusivity",
-                "exists": true,
-                "excerpts": [
-                    "Other than with respect to the Cell Sites expressly contemplated in the Build Addendum, this Agreement does not grant Vendor any right or privilege to provide to AT&T any Work of the type described in or purchased under this Agreement in any market or geographic area."
-                ]
+                "exists": false,
+                "excerpts": []
             },
             {
                 "clause_type": "No-Solicit Of Customers",
@@ -61,9 +59,7 @@
             {
                 "clause_type": "Termination For Convenience",
                 "exists": false,
-                "excerpts": [
-                    "This Agreement, the Build Addendum and the Maintenance Addendum may not be terminated by either Party at any time for its own convenience."
-                ]
+                "excerpts": []
             },
             {
                 "clause_type": "Rofr/Rofo/Rofn",
@@ -74,7 +70,7 @@
                 "clause_type": "Change Of Control",
                 "exists": true,
                 "excerpts": [
-                    "\u201cChange of Control\u201d means any contract or transaction or series of related contracts or transactions that would directly result in the Control of a Person or its business or assets changing from one Person to another Person."
+                    "\u201cChange of Control\u201d means any contract or transaction or series of related contracts or transactions (regardless of form or structure) that would directly result in the Control of a Person or its business or assets changing from one Person to another Person (alone or in combination with any other third Person)."
                 ]
             },
             {
@@ -106,7 +102,7 @@
                 "clause_type": "IP Ownership Assignment",
                 "exists": true,
                 "excerpts": [
-                    "Vendor shall assign or have assigned to AT&T and hereby assigns to AT&T all Intellectual Property Rights in and to the Paid-For Development."
+                    "AT&T shall be the exclusive owner of all right, title, and interest in and to all Paid-For Development, including, without limitation, all Intellectual Property Rights therein and thereto."
                 ]
             },
             {
@@ -118,7 +114,7 @@
                 "clause_type": "License grant",
                 "exists": true,
                 "excerpts": [
-                    "Vendor hereby grants and promises to grant and have granted to AT&T and its Affiliates a royalty-free, nonexclusive, sublicensable, assignable, transferable, irrevocable, perpetual, world-wide license in and to any applicable Intellectual Property Rights of Vendor."
+                    "Vendor hereby grants and promises to grant and have granted to AT&T and its Affiliates a royalty-free, nonexclusive, sublicensable, assignable, transferable, irrevocable, perpetual, world-wide license."
                 ]
             },
             {
@@ -145,7 +141,7 @@
                 "clause_type": "Irrevocable Or Perpetual License",
                 "exists": true,
                 "excerpts": [
-                    "a royalty-free, nonexclusive, sublicensable, assignable, transferable, irrevocable, perpetual, world-wide license in and to any applicable Intellectual Property Rights of Vendor."
+                    "Vendor hereby grants and promises to grant and have granted to AT&T and its Affiliates a royalty-free, nonexclusive, sublicensable, assignable, transferable, irrevocable, perpetual, world-wide license."
                 ]
             },
             {
@@ -180,17 +176,13 @@
             },
             {
                 "clause_type": "Warranty Duration",
-                "exists": true,
-                "excerpts": [
-                    "All representations and warranties set forth above in Section 3.46(b) or elsewhere in this Agreement (other than the specific warranty periods specified in Section 3.46(a)) will survive expiration or termination of this Agreement for a period of [***] years from such expiration or termination."
-                ]
+                "exists": false,
+                "excerpts": []
             },
             {
                 "clause_type": "Insurance",
-                "exists": true,
-                "excerpts": [
-                    "Insurance requirements are typically detailed in contract sections related to risk management."
-                ]
+                "exists": false,
+                "excerpts": []
             },
             {
                 "clause_type": "Covenant Not To Sue",
@@ -199,10 +191,8 @@
             },
             {
                 "clause_type": "Third Party Beneficiary",
-                "exists": true,
-                "excerpts": [
-                    "AT&T's Affiliates are considered as AT&T Indemnified Parties under the agreement."
-                ]
+                "exists": false,
+                "excerpts": []
             }
         ]
     }

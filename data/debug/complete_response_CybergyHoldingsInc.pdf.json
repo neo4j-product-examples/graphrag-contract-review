@@ -2,17 +2,17 @@
 {
   "agreement": {
     "agreement_name": "Marketing Affiliate Agreement",
-    "agreement_type": "Marketing Affiliate Agreement",
-    "effective_date": "May 8, 2014",
-    "expiration_date": "End of the current calendar year from execution",
-    "renewal_term": "Successive one (1) year periods",
-    "Notice_period_to_Terminate_Renewal": "Thirty (30) days written notice",
+    "agreement_type": "Affiliate Agreement",
+    "effective_date": "2014-05-08",
+    "expiration_date": "2014-12-31",
+    "renewal_term": "1 year",
+    "Notice_period_to_Terminate_Renewal": "30 days",
     "parties": [
       {
         "role": "Company",
         "name": "Birch First Global Investments Inc.",
         "incorporation_country": "United States",
-        "incorporation_state": "Virgin Islands"
+        "incorporation_state": "U.S. Virgin Islands"
       },
       {
         "role": "Marketing Affiliate",
@@ -33,7 +33,7 @@
         "excerpts": []
       },
       {
-        "clause_type": "Non-Compete Clause",
+        "clause_type": "Non-Compete",
         "exists": false,
         "excerpts": []
       },
@@ -54,8 +54,10 @@
       },
       {
         "clause_type": "Non-Disparagement",
-        "exists": false,
-        "excerpts": []
+        "exists": true,
+        "excerpts": [
+          "avoid deceptive, misleading or unethical practices that are or might be detrimental to Company and/or its Affiliates, the Technology or the public, including but not limited to disparagement of Company or the Technology"
+        ]
       },
       {
         "clause_type": "Termination For Convenience",
@@ -97,7 +99,7 @@
         "clause_type": "Minimum Commitment",
         "exists": true,
         "excerpts": [
-          "INITIAL ORDER COMMITMENT – MA commits to purchase a minimum of 100 Units in aggregate within the Territory within the first six months of term of this Agreement."
+          "MA commits to purchase a minimum of 100 Units in aggregate within the Territory within the first six months of term of this Agreement."
         ]
       },
       {
@@ -119,13 +121,15 @@
         "clause_type": "License grant",
         "exists": true,
         "excerpts": [
-          "Company hereby grants to MA the right to advertise, market and sell to corporate users, government agencies and educational facilities (“Clients”) for their own internal language learning, soft skills and communication purposes only."
+          "Company hereby grants to MA the right to advertise, market and sell to corporate users, government agencies and educational facilities"
         ]
       },
       {
         "clause_type": "Non-Transferable License",
-        "exists": false,
-        "excerpts": []
+        "exists": true,
+        "excerpts": [
+          "MA and its Clients receive no title to the Technology contained on the Technology."
+        ]
       },
       {
         "clause_type": "Affiliate License-Licensor",
@@ -149,15 +153,15 @@
       },
       {
         "clause_type": "Source Code Escrow",
-        "exists": false,
-        "excerpts": []
+        "exists": true,
+        "excerpts": [
+          "MA agrees that it shall not, by itself or in association with any other party, reproduce, duplicate, copy, decompile, disassemble or reverse engineer the Technology in source form"
+        ]
       },
       {
         "clause_type": "Post-Termination Services",
-        "exists": true,
-        "excerpts": [
-          "MA shall immediately cease advertising, marketing, promoting and distributing the Technology and shall cease using the trade names, trademarks, service marks and any other proprietary right of Company."
-        ]
+        "exists": false,
+        "excerpts": []
       },
       {
         "clause_type": "Audit Rights",
@@ -171,8 +175,10 @@
       },
       {
         "clause_type": "Cap On Liability",
-        "exists": false,
-        "excerpts": []
+        "exists": true,
+        "excerpts": [
+          "Company's liability shall not exceed the fees that MA has paid under this Agreement."
+        ]
       },
       {
         "clause_type": "Liquidated Damages",
@@ -183,7 +189,7 @@
         "clause_type": "Warranty Duration",
         "exists": true,
         "excerpts": [
-          "COMPANY’S SOLE AND EXCLUSIVE LIABILITY FOR THE WARRANTY ... provided, any claim for breach of warranty under subparagraph (a) hereof must be made in writing within ninety (90) days from date of shipment."
+          "any claim for breach of warranty under subparagraph (A) hereof must be made in writing within (90) days from date of shipment."
         ]
       },
       {

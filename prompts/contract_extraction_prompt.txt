@@ -4,9 +4,9 @@ In your answers, Use information exclusively on this contract.
 
 1) What type of contract is this? 
 2) Who are the parties and their roles? Where are they incorporated? Name state and country (use ISO 3166 Country name)
-3) What is the Agreement Date? 
-4) What is the Effective date? 
-5) What is the expiration date? (provide the specific date if mentioned in the contract or a relative data if the expiration date is relative to the Agreement date) 
+3) What is the Agreement Date? (if absolute date is mentioned use yyyy-mm-dd)
+4) What is the Effective date? (if absolute date is mentioned use yyyy-mm-dd)
+5) What is the expiration date? (if absolute date is mentioned use yyyy-mm-dd)
 6) What is the Renewal Term ? 
 7) What is the Notice Period To Terminate Renewal? 
 8) What is the governing law ? 
