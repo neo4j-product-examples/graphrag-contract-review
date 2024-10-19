@@ -9,13 +9,14 @@ The GraphRAG-based approach described in the blog post goes beyond the tradition
 The diagram below illustrates the approach
 
 ![4-stage-approach](./images/4-stage-approach%20.png)
+The 4-stage GraphRAG approach: From question-based extraction -> knowledge graph model -> GraphRAG retrieval -> Q&A Agent
 
 
 The four steps are:
-- Extracting Relevant Information from Contracts (LLM + Contract)
-- Storing information extracted into a Knowledge Graph (Neo4j)
-- Developing simple KG Data Retrieval Functions (Python)
-- Building a Q&A Agent handling complex questions (Semantic Kernel, LLM, Neo4j)
+1. Extracting Relevant Information from Contracts (LLM + Contract)
+2. Storing information extracted into a Knowledge Graph (Neo4j)
+3. Developing simple KG Data Retrieval Functions (Python)
+4. Building a Q&A Agent handling complex questions (Semantic Kernel, LLM, Neo4j)
 
 # What Do You Need?
 - Obtain an [OpenAI token](https://platform.openai.com/api-keys). It will be used to:
@@ -205,14 +206,10 @@ The original [blog post](https://medium.com/@edward.sandoval.2000/graphrag-in-co
 
 Armed with our Knowledge Graph data retrieval functions, we are ready to build an agent grounded by GraphRAG!
 
-We will use Microsoft Semantic Kernel, a framework that allows developers to integrate LLM function calling with existing APIs and data retrieval functions 
-
-The framework uses a concept called ```Plugins``` to represent specific functionality that the kernel can perform. In our case, all of our data retrieval functions defined in the "ContractPlugin" can be used by the LLM to answer questions about contracts in the Neo4J database
-
-The framework uses the concept of ```Memory``` to keep all interactions between user and agent, as well as functions executed and data retrieved
+We will use Microsoft Semantic Kernel, a framework that allows developers to integrate LLM function calling with existing APIs and data retrieval functions The framework uses a concept called ```Plugins``` to represent specific functionality that the kernel can perform. In our case, all of our data retrieval functions defined in the "ContractPlugin" can be used by the LLM to answer questions about contracts in the Neo4J database
+In addition, Semantic Kernel uses the concept of ```Memory``` to keep all interactions between user and agent. This includes details of any functions called/executed (with all input and output data)
 
 An extremely simple Terminal-based agent can be implemented with a few lines of code. 
-
 
 Run
 ```

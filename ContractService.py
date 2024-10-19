@@ -190,8 +190,6 @@ class ContractSearchService:
     async def answer_aggregation_question(self, user_question) -> str:
         answer = ""
 
-        
-
         NEO4J_SCHEMA = """
             Node properties:
             Agreement {agreement_type: STRING, contract_id: INTEGER,effective_date: STRING,renewal_term: STRING, name: STRING}
@@ -235,7 +233,7 @@ class ContractSearchService:
         return answer
 
     async def _get_agreement (self,agreement_node, format="short", party_list=None, role_list=None,country_list=None,
-                              state_list=None,clause_list=None): 
+                              state_list=None,clause_list=None,clause_dict=None): 
         agreement : Agreement = {}
 
         if format == "short" and agreement_node:
@@ -266,47 +264,60 @@ class ContractSearchService:
                 state_list=state_list)   
 
             clauses = []
-            for clause in clause_list:
+            if clause_list:
+                for clause in clause_list:
                     clause : ContractClause = {"clause_type": clause.get('type')}
                     clauses.append(clause)
-               
+            
+            elif clause_dict:
+            
+                for clause_type_key in clause_dict:
+                    clause : ContractClause = {"clause_type": clause_type_key,"excerpts": clause_dict[clause_type_key]}
+                    clauses.append(clause)
+
             agreement['clauses'] = clauses
+
             
 
         return agreement
 
     async def _get_parties (self, party_list=None, role_list=None,country_list=None,state_list=None):
         parties = []
-        for i in range(len(party_list)):
-            p: Party = {
-                "name":  party_list[i].get('name'),
-                "role":  role_list[i].get('role'),
-                "incorporation_country": country_list[i].get('name'),
-                "incorporation_state": state_list[i].get('state')
-            }
-            parties.append(p)
+        if party_list:
+            for i in range(len(party_list)):
+                p: Party = {
+                    "name":  party_list[i].get('name'),
+                    "role":  role_list[i].get('role'),
+                    "incorporation_country": country_list[i].get('name'),
+                    "incorporation_state": state_list[i].get('state')
+                }
+                parties.append(p)
         
         return parties
     
-    async def _get_contract_clauses (self, contract_id:int):
+    async def get_contract_excerpts (self, contract_id:int):
 
         GET_CONTRACT_CLAUSES_QUERY = """
         MATCH (a:Agreement {contract_id: $contract_id})-[:HAS_CLAUSE]->(cc:ContractClause)-[:HAS_EXCERPT]->(e:Excerpt)
-        RETURN cc.type as contract_clause_type, collect(e.text) as excerpts 
+        RETURN a as agreement, cc.type as contract_clause_type, collect(e.text) as excerpts 
         """
-        
         #run CYPHER query
         clause_records, _, _  = self._driver.execute_query(GET_CONTRACT_CLAUSES_QUERY,{'contract_id':contract_id})
 
-        clauses_dict = {}
+        #get a dict d[clause_type]=list(Excerpt)
+        clause_dict = {}
         for row in clause_records:
-            clause_type =  row['contract_clause_type']
+            agreement_node = row['agreement']
+            clause_type = row['contract_clause_type']
             relevant_excerpts =  row['excerpts']
-            clauses_dict[clause_type] = relevant_excerpts
+            clause_dict[clause_type] = relevant_excerpts
+        
+        #Agreement to return
+        agreement = await self._get_agreement(
+            format="long",agreement_node=agreement_node,
+            clause_dict=clause_dict)
 
-        # Create a list of KeyValuePair objects
-        clause_list = [(key, item) for key, item in clauses_dict.items()]
+        return agreement
 
-        return clause_list
 
 

@@ -40,3 +40,8 @@ class ContractPlugin:
     async def answer_aggregation_question(self, user_question: str) -> Annotated[str, "An answer to user_question"]:
         """Answer obtained by turning user_question into a CYPHER query"""
         return await self.contract_search_service.answer_aggregation_question(user_question=user_question)
+    
+    @kernel_function
+    async def get_contract_excerpts(self, contract_id: int) -> Annotated[Agreement, "A contract"]:
+        """Gets basic contract details and its excerpts."""
+        return await self.contract_search_service.get_contract_excerpts(contract_id=contract_id)
