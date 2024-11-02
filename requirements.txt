@@ -1,5 +1,5 @@
-neo4j-rust-ext
-neo4j-graphrag
-semantic-kernel
-streamlit
-openai
+neo4j-rust-ext == 5.25.0.0
+neo4j-graphrag == 1.0.0
+semantic-kernel == 1.11.0
+streamlit == 1.39.0
+openai == 1.51.2
